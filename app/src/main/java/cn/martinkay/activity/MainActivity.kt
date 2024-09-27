@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -43,9 +42,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, Runnable {
         moleculeView.setMolecule(currMol);
         moleculeView.setOnClickListener(this)
 
-        mBinding.reset.setOnClickListener({
+        mBinding.reset.setOnClickListener {
             moleculeView.unselectedAllChiral()
-        })
+            this@MainActivity.onClick(moleculeView)
+        }
 
         mBinding.change.setOnClickListener(this)
         mBinding.next.setOnClickListener(this)
